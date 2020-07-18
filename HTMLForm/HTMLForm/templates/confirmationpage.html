@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+
+header {
+  background-color: #64a34b;
+  padding: 30px;
+  width: 1000px;
+  align: center;
+  margin:auto;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  border-radius: 5px;
+}
+
+</style>
+  <head>
+    <header>
+        CSC 642 Summer 2020 Data survey Confirmation Page
+    </header>
+    <br>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>defer src="script.js"</script>
+
+    <title>Data Survey Form</title>
+
+    <!-- Required Stylesheets -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"
+    />
+
+    <!-- Load polyfills to support older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"></script>
+
+    <!-- Required scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCydybmqAlZOo8XGEXvLKC1UzwjILwR9j8&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+
+  </head>
+  <body>
+
+  <div style="background-color: #F1CF89; width:1000px; margin:auto; text-align:center; border-radius: 5px;" class="w3-container">
+        Hello <span id="write"></span>, please confirm the following information is correct: <br>
+        Address:
+        <span id="writeStreet"></span> <span id="writeCity"></span> <span id="writeState"></span>
+        <span id="writeZip"></span> <br>
+
+        <div style="text-decoration:none; overflow:hidden;max-width:100%;width:500px;height:500px;">
+          <div id="gmapcanvas" style="height:100%; width:100%;max-width:100%;">
+            <iframe style="height:100%;width:100%;border:0;" frameborder="0"
+            src={{"https://www.google.com/maps/embed/v1/search?q="+address_q + "&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"}}>
+            </iframe>
+          </div>
+        </div>
+
+
+        Date of Birth: <span id="writeMonth"></span>
+        <span id="writeDay"></span> <span id="writeYear"></span> <br>
+        Education Level: <span id="writeEducation"></span><br>
+        Phone Number: <span id="writePhone"></span><br>
+        Height: <span id="writeFeet"></span> Feet <span id="writeInches"></span> Inch(es)<br>
+        Email Address: <span id="writeEmail"></span>
+
+  </div>
+
+    <script>
+      document.getElementById("write").innerHTML=localStorage.getItem("theName");
+      document.getElementById("writeStreet").innerHTML=localStorage.getItem("theStreet");
+      document.getElementById("writeCity").innerHTML=localStorage.getItem("theCity");
+      document.getElementById("writeState").innerHTML=localStorage.getItem("theState");
+      document.getElementById("writeZip").innerHTML=localStorage.getItem("theZip");
+      document.getElementById("writeMonth").innerHTML=localStorage.getItem("theMonth");
+      document.getElementById("writeDay").innerHTML=localStorage.getItem("theDay");
+      document.getElementById("writeYear").innerHTML=localStorage.getItem("theYear");
+      document.getElementById("writeEducation").innerHTML=localStorage.getItem("theEducation");
+      document.getElementById("writePhone").innerHTML=localStorage.getItem("thePhone");
+      document.getElementById("writeFeet").innerHTML=localStorage.getItem("theFeet");
+      document.getElementById("writeInches").innerHTML=localStorage.getItem("theInches");
+      document.getElementById("writeEmail").innerHTML=localStorage.getItem("theEmail");
+
+    </script>
+
+
+
+
+  </body>
+</html>
