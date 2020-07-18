@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+/* Style the header */
+header {
+  background-color: #64a34b;
+  padding: 30px;
+  width: 1000px;
+  align: center;
+  margin:auto;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+  border-radius: 5px;
+}
+
+</style>
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>defer src="/script.js"</script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script>
+
+    function passvalues(){
+      var userName = document.getElementById("firstLastName").value;
+      localStorage.setItem("theName", userName);
+
+      var userStreet = document.getElementById("streetname").value;
+      localStorage.setItem("theStreet", userStreet);
+
+      var userCity = document.getElementById("cityName").value;
+      localStorage.setItem("theCity", userCity);
+
+      var userState = document.getElementById("stateName").value;
+      localStorage.setItem("theState", userState);
+
+      var userZip = document.getElementById("zipName").value;
+      localStorage.setItem("theZip", userZip);
+
+      var userMonth = document.getElementById("monthName").value;
+      localStorage.setItem("theMonth",userMonth);
+
+      var userDay = document.getElementById("birthDay").value;
+      localStorage.setItem("theDay",userDay);
+
+      var userYear = document.getElementById("birthYear").value;
+      localStorage.setItem("theYear",userYear);
+
+      var userEducation = document.getElementById("educationName").value;
+      localStorage.setItem("theEducation",userEducation);
+
+      var userPhone = document.getElementById("phoneNum").value;
+      localStorage.setItem("thePhone",userPhone);
+
+      var userFeet = document.getElementById("heightFeet").value;
+      localStorage.setItem("theFeet",userFeet);
+
+      var userInches = document.getElementById("heightInches").value;
+      localStorage.setItem("theInches",userInches);
+
+      var userEmail = document.getElementById("emailAddress").value;
+      localStorage.setItem("theEmail",userEmail);
+
+      return false;
+    }
+
+
+      function recaptchaCallback() {
+          var btnSubmit = document.getElementById("btnSubmit");
+
+          if ( btnSubmit.classList.contains("hidden") ) {
+              btnSubmit.classList.remove("hidden");
+              btnSubmitclassList.add("show");
+          }
+        }
+
+
+    function validateForm() {
+      var streetAddy = document.forms["theForm"]["streetName"].value;
+      var enteredName = document.forms["theForm"]["firstLastName"].value;
+      var enteredCity = document.forms["theForm"]["cityName"].value;
+      var enteredNumber = document.forms["theForm"]["phoneNum"].value;
+      var enteredZip = document.forms["theForm"]["zipCode"].value;
+      var emailOne = document.forms["theForm"]["email1"].value;
+      var emailTwo = document.forms["theForm"]["email2"].value;
+
+      if (streetAddy == "" || streetAddy.length > 40) {
+        document.getElementById("streetWrong").innerHTML="Enter valid street address.";
+        return false;
+      }
+      if(enteredName == "" || enteredName.length > 40)
+      {
+        document.getElementById("nameWrong").innerHTML="Enter valid name, less than 40 characters.";
+        return false;
+      }
+      if(isNaN(enteredNumber) || enteredNumber.length > 7 || enteredNumber.length < 7)
+      {
+        document.getElementById("numWrong").innerHTML="Enter phone number that is 7 characters.";
+        return false;
+      }
+
+      if(isNaN(enteredZip) || enteredZip.length > 5 || enteredZip.length < 5)
+      {
+        document.getElementById("zipWrong").innerHTML="Enter a valid zip code that is 5 digits long.";
+        return false;
+      }
+
+      if(emailOne != emailTwo)
+      {
+        document.getElementById("noMatch").innerHTML="Email addresses don't match.";
+        return false;
+      }
+
+
+
+
+    }
+    </script>
+
+
+    <title>Form</title>
+  </head>
+  <header>
+      CSC 642 Summer 2020 Data Survey Form
+  </header>
+  <br>
+  <body>
+
+
+    <form name="theForm" id="theForm" onsubmit="return validateForm()" action="confirmationpage.html" method="get" style="background-color: #F1CF89; width:1000px; margin:auto; border-radius: 5px;" class="w3-container">
+      <div style="width:600px; margin: auto">
+        <br><label for="name">Name *</label>
+        <small class="form-text" id="nameWrong" style="color: red"></small>
+        <input name="firstLastName" type= "text" id="firstLastName" class="form-control" placeholder="First Last" required><br>
+      </div>
+
+      <div class="form-group" style="width:600px; margin:auto">
+        <label for=addressgroup>Address *</label>
+        <small class="form-text" id="streetWrong"style="color: red"></small>
+        <input name="streetName" type="text" class="form-control" placeholder="Street" id="streetname" required>
+        <small class="form-text text-muted"> Ex. 1600 Holloway Avenue </small>
+      </div>
+      <div class="form-row col" style="width:645px; margin:auto">
+        <div class="col-md-6 form-group">
+          <input type="text" name="cityName" class="form-control" placeholder="City" id="cityName" aria-describedby="inputGroupPrepend" required>
+          <small id="addresshelp" class="form-text text-muted">
+            Ex. San Francisco
+          </small>
+        </div>
+        <div class="form-group col-md-4">
+        <select type="text" class="form-control" id="stateName" aria-describedby="inputGroupPrepend" required>
+          <option selected> </option>
+          <option value="AL">AL</option>
+          <option value="AK">AK</option>
+          <option value="AR">AR</option>
+          <option value="AZ">AZ</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DC">DC</option>
+          <option value="DE">DE</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="IA">IA</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="MA">MA</option>
+          <option value="MD">MD</option>
+          <option value="ME">ME</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MO">MO</option>
+          <option value="MS">MS</option>
+          <option value="MT">MT</option>
+          <option value="NC">NC</option>
+          <option value="NE">NE</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NV">NV</option>
+          <option value="NY">NY</option>
+          <option value="ND">ND</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VT">VT</option>
+          <option value="VA">VA</option>
+          <option value="WA">WA</option>
+          <option value="WI">WI</option>
+          <option value="WV">WV</option>
+          <option value="WY">WY</option>
+        </select>
+        <small class="form-text text-muted">
+           Please choose your state.
+         </small>
+       </div>
+       <div class="form-group col-md-2">
+         <small class="form-text" id="zipWrong"style="color: red"></small>
+         <input type="text" name="zipCode" class="form-control" placeholder="Zip Code" id="zipName" aria-describedby="inputGroupPrepend" required>
+         <small class="form-text text-muted">
+           Ex. 94112
+         </small>
+       </div>
+       </div>
+       <div class="col form-group" style="width:645px; margin:auto">
+         <label for=birthday>Date of Birth *</label>
+       </div>
+       <div class="form-row col" style="width:645px; margin:auto">
+         <div class="col-md-8 form-group">
+             <input type="text" class="form-control" placeholder="Month" id="monthName" aria-describedby="inputGroupPrepend" required>
+             <small class="form-text text-muted">
+               Ex. September
+             </small>
+         </div>
+         <div class="form-group col-md-2">
+           <input type="text" class="form-control" placeholder="Day" id="birthDay" aria-describedby="inputGroupPrepend" required>
+           <div class="invalid-feedback">
+             Please enter your day of birth.
+           </div>
+           <small class="form-text text-muted">
+             Ex. 8
+           </small>
+         </div>
+         <div class="form-group col-md-2">
+           <input type="text" class="form-control" placeholder="Year" id="birthYear" aria-describedby="inputGroupPrepend" required>
+           <small class="form-text text-muted">
+             Ex. 1996
+           </small>
+         </div>
+         <div class="form-group" style="width:645px; margin:auto">
+           <label>Education Level</label>
+             <select class="form-control" id="educationName">
+             <option selected></option>
+             <option>High School</option>
+             <option>College</option>
+             <option>Graduate Studies</option>
+             <option>Ph.D</option>
+           </select>
+           <br>
+          </div>
+          <div class="form-group col" style="width:645px; margin:auto">
+            <label>Phone Number *</label>
+            <small class="form-text" id="numWrong"style="color: red"></small>
+            <input type="text" name="phoneNum" class="form-control" placeholder="1114444" id="phoneNum" aria-describedby="inputGroupPrepend" required>
+            <small class="form-text text-muted">
+              Must be 7 digits, do not include area code.
+            </small>
+          </div>
+          </div>
+          <br>
+
+          <div class="form-group col" style="width:645px; margin:auto">
+            <label>Height</label>
+          </div>
+          <div class="form-row col" style="width:645px; margin:auto">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="heightFeet" placeholder="Feet">
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="heightInches" placeholder="Inches">
+            </div>
+          </div>
+
+          <div class="form-group col" style="width:645px; margin:auto">
+            <label>Email Address *</label>
+            <input type="email" name="email1" class="form-control" placeholder="email@mail.com" id="emailAddress" aria-describedby="inputGroupPrepend" required>
+          </div>
+          <br>
+          <div class="form-group col" style="width:645px; margin:auto">
+            <label>Re-enter your email address</label>
+            <input type="email" name="email2" class="form-control" placeholder="email@mail.com" id="emailConfirm" aria-describedby="inputGroupPrepend" required>
+            <small class="form-text text-muted">
+              Confirm your email.
+            </small>
+            <small class="form-text" id="noMatch"style="color: red"></small>
+          </div>
+
+          <div class="form-group col" style="width:645px; margin:auto">
+            <div class="form-group form-check col">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please read and confirm you agree with the conditions.
+              </div>
+              <div>
+              <label class="form-check-label" for="exampleCheck1">I have read and agree with the terms and conditions. *</label>
+            </div>
+          </div>
+
+
+
+          <div class="form-group col" style="width:700px; margin:left;">
+            <div class="g-recaptcha" id="g-recaptcha-response" data-sitekey="6LcviLEZAAAAAMA7KFriVyZju_1WNRgh4NXauczl" data-callback="recaptchaCallback" required></div>
+            <input type="submit" class="btn btn-default hidden" id="btnSubmit" value="Submit" onclick="passvalues();" style="background-color:#64a34b; color:white; border-color:#64a34b; margin:auto; align:center; ">
+
+          </div>
+
+
+          <br>
+
+
+            <!-- onclick = "location.href = 'confirming.html'" <button id="submitbutton" type="submit" class="btn btn-primary">Submit</button>-->
+            <!--<input type="submit" class="btn btn-primary" value="Submit" onclick="passvalues();" style="background-color:#2C862A; border-color:#2C862A; margin:auto; align:center; ">-->
+            <br>
+
+
+    </form>
+    <br>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ1WUTJD4Iobl3m2OLBhf_bCJorfBn7zI&callback=initMap"
+    type="text/javascript"></script>
+  </body>
+  <br><br>
+</html>
